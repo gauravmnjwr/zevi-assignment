@@ -1,13 +1,96 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.all-cards {
+  display: flex;
+  flex-wrap: wrap;
+  /* row-gap: 20px;
+  column-gap: 20px; */
+  align-items: center;
+  justify-content: center;
+}
+
+.main-card {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  min-width: 190px;
+  row-gap: 2px;
+}
+
+.p-image {
+  width: 100%;
+  position: relative;
+}
+.p-image img {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  max-width: 300px;
+}
+
+.p-price {
+  display: flex;
+}
+
+.p-original {
+  text-decoration: line-through;
+  font-size: 14px;
+  color: gray;
+}
+
+.p-selling {
+  color: #6d84ff;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.p-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.all-cards > div {
+  width: 20%;
+}
+
+.p-rating {
+  display: flex;
+  column-gap: 5px;
+  font-size: 13px;
+  align-items: center;
+  width: fit-content;
+  padding: 1px;
+  color: gray;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+.abs-heart {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+}
+.abs-heart i {
+  color: #6d84ff;
+  width: 20px;
 }
