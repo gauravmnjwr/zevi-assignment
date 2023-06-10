@@ -1,37 +1,40 @@
-import React, { useState } from "react";
-import { productDataGenerator } from "./dataGenerator/DataGenerator";
-import Rating from "./Rating";
+import RatingComponent from "./RatingComponent";
+import FilterComponent from "./FilterComponent";
 
-function ProductCard() {
-  const [data, setData] = useState(productDataGenerator());
-  const [heart, setHeart] = useState(true);
-  console.log(data);
+function ProductCard({ data }) {
+  //   console.log(data);
   return (
-    <div className="all-cards">
-      {data.map((d, i) => {
-        return (
-          <div key={d.id} className="main-card">
-            <div className="p-image">
-              <div className="abs-heart">
-                <i class="fa-regular fa-heart" style={{ color: "#ffffff" }}></i>
+    <div className="main-page">
+      <FilterComponent />
+      <div className="all-cards">
+        {data.map((d, i) => {
+          return (
+            <div key={d.id} className="main-card">
+              <div className="p-image">
+                <div className="abs-heart">
+                  <i
+                    className="fa-regular fa-heart"
+                    style={{ color: "#ffffff" }}
+                  ></i>
+                </div>
+                <img src={d.img} alt="" />
               </div>
-              <img src={d.img} alt="" />
-            </div>
-            <div className="p-name">{d.name}</div>
-            <div className="p-price">
-              <div className="p-original">${d.originalPrice} </div>
-              &nbsp; &nbsp;
-              <div className="p-selling">${d.sellingPrice}</div>
-            </div>
-            <div className="p-rating">
-              <div>
-                <Rating value={d.rating} />
+              <div className="p-name">{d.name}</div>
+              <div className="p-price">
+                <div className="p-original">${d.originalPrice} </div>
+                &nbsp; &nbsp;
+                <div className="p-selling">${d.sellingPrice}</div>
               </div>
-              <div>({d.reviews})</div>
+              <div className="p-rating">
+                <div>
+                  <RatingComponent value={d.rating} />
+                </div>
+                <div>({d.reviews})</div>
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

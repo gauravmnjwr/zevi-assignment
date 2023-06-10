@@ -16,16 +16,22 @@ const productDataGenerator = () => {
     return rating / 10;
   }
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 50; i++) {
     const id =
       Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
     const name = faker.commerce.productName();
-    const sellingPrice = parseInt(faker.commerce.price(0, 100));
+    const sellingPrice = parseInt(faker.commerce.price({ min: 0, max: 100 }));
     const originalPrice = sellingPrice + sellingPrice * 0.2;
     const brand = generateRandomBrand();
     const rating = generateRandomRating();
     const reviews = Math.floor(Math.random() * 900) + 100;
-    const img = faker.image.abstract(480, 600, true);
+    const img = faker.image.urlLoremFlickr({
+      width: 480,
+      height: 600,
+      category: "abstract",
+      randomize: true,
+    });
+
     tempData.push({
       id,
       name,
