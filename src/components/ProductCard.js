@@ -1,11 +1,13 @@
 import RatingComponent from "./RatingComponent";
 import FilterComponent from "./FilterComponent";
 
-function ProductCard({ data }) {
-  //   console.log(data);
+function ProductCard({ data, getFilters }) {
+  const filteredData = (q) => {
+    getFilters(q);
+  };
   return (
     <div className="main-page">
-      <FilterComponent />
+      <FilterComponent filteredData={filteredData} />
       <div className="all-cards">
         {data.map((d, i) => {
           return (

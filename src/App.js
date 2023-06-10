@@ -6,6 +6,7 @@ import { useState } from "react";
 
 function App() {
   const [data, setData] = useState(productDataGenerator());
+  console.log(data);
 
   const searchQuery = (q) => {
     const obj = productDataGenerator();
@@ -19,11 +20,18 @@ function App() {
     }
   };
 
+  const getFilters = (filter) => {
+    console.log(filter);
+    const obj = productDataGenerator();
+    const renderedData = obj.filter((o, i) => {
+      // if()
+    });
+  };
+
   return (
     <div className="App">
       <NavbarComponent searchQuery={searchQuery} />
-      <ProductCardComponent data={data} />
-      {/* <FilterComponent /> */}
+      <ProductCardComponent data={data} getFilters={getFilters} />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 const tempData = [];
 
 const productDataGenerator = () => {
-  const brands = ["adidas", "nike", "nb", "puma", "yonex"];
+  const brands = ["mango", "hm", "superdry"];
 
   function generateRandomBrand() {
     const randomIndex = Math.floor(Math.random() * brands.length);

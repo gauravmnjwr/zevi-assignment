@@ -19,6 +19,9 @@ code {
   column-gap: 20px; */
   align-items: center;
   justify-content: center;
+  height: 89vh;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .main-card {
@@ -200,24 +203,36 @@ code {
   column-gap: 20px;
 }
 
-.price-inp > div {
-  display: flex;
-  row-gap: 20px;
-}
 .price-inp {
   display: flex;
   row-gap: 10px;
 }
-
-.price-inp > div input[type="text"] {
-  width: 50%;
-  height: 30px;
-  border-radius: 6px;
-  border: 1px solid gray;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.price-inp > div input:focus {
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.price-inp > div div input[type="number"] {
+  width: 80%;
+  height: 30px;
+  border-radius: 6px;
+  border: 0px;
+}
+
+.price-inp > div div input:focus {
   outline: none;
   box-shadow: none;
-  border: 1px solid #6d84ff;
+}
+
+.price-over-div {
+  width: 50%;
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding-left: 10px;
+  font-size: 14px;
 }
