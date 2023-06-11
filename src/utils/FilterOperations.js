@@ -9,6 +9,13 @@ function FilterOperations({
   const [tempData, setTempData] = useState([]);
 
   useEffect(() => {
+    const renderedData = tempData.filter((e, i) => {
+      return e.name.toLowerCase().includes(searchQ.toLowerCase());
+    });
+    filteredDataFromUtils(renderedData);
+  }, [searchQ]);
+
+  useEffect(() => {
     getFilters();
   }, [appliedFilters]);
 
