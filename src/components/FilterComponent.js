@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Rating from "./RatingComponent";
 
 function FilterComponent({ filteredData }) {
@@ -24,8 +24,21 @@ function FilterComponent({ filteredData }) {
     }
   };
 
+  useEffect(() => {
+    filteredData(value);
+  }, [value]);
+
   const handlePriceInputFilter = (e, s) => {
     const targetVal = e.target.value;
+    setValue((prevState) => ({
+      ...prevState,
+      price: {
+        ...prevState.price,
+        under50: false,
+        over50: false,
+      },
+    }));
+
     if (targetVal <= 100) {
       if (s === "min") {
         setValue((prevState) => ({
@@ -112,6 +125,15 @@ function FilterComponent({ filteredData }) {
 
   const handleInputPriceCheckbox = (q) => {
     if (q === "o") {
+      if (value.price.under50 && !value.price.over50) {
+        setValue((prevState) => ({
+          ...prevState,
+          price: {
+            ...prevState.price,
+            under50: false,
+          },
+        }));
+      }
       setValue((prevState) => ({
         ...prevState,
         price: {
@@ -120,6 +142,15 @@ function FilterComponent({ filteredData }) {
         },
       }));
     } else if (q === "u") {
+      if (value.price.over50 && !value.price.under50) {
+        setValue((prevState) => ({
+          ...prevState,
+          price: {
+            ...prevState.price,
+            over50: false,
+          },
+        }));
+      }
       setValue((prevState) => ({
         ...prevState,
         price: {
@@ -129,7 +160,6 @@ function FilterComponent({ filteredData }) {
       }));
     }
   };
-  filteredData(value);
 
   return (
     <div className="filter-main">
@@ -226,6 +256,7 @@ function FilterComponent({ filteredData }) {
                 name="under-50"
                 id="under-50"
                 onChange={() => handleInputPriceCheckbox("u")}
+                checked={value.price.under50}
               />
               <label htmlFor="under-50"> Under $50</label>
             </div>
@@ -277,7 +308,7 @@ function FilterComponent({ filteredData }) {
                 onChange={() => handleRatingFilter("4")}
               />
               <label htmlFor="fourstar">
-                <Rating value={4} />
+                <Rating value={4} text={"& Up"} />
               </label>
             </div>
             <div>
@@ -290,7 +321,7 @@ function FilterComponent({ filteredData }) {
                 onChange={() => handleRatingFilter("3")}
               />
               <label htmlFor="threestar">
-                <Rating value={3} />
+                <Rating value={3} text={"& Up"} />
               </label>
             </div>
             <div>
@@ -303,7 +334,7 @@ function FilterComponent({ filteredData }) {
                 onChange={() => handleRatingFilter("2")}
               />
               <label htmlFor="twostar">
-                <Rating value={2} />
+                <Rating value={2} text={"& Up"} />
               </label>
             </div>
             <div>
@@ -316,7 +347,7 @@ function FilterComponent({ filteredData }) {
                 checked={value.rating.one}
               />
               <label htmlFor="onestar">
-                <Rating value={1} />
+                <Rating value={1} text={"& Up"} />
               </label>
             </div>
           </div>

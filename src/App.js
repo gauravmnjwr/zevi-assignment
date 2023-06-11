@@ -1,37 +1,42 @@
 import ProductCardComponent from "./components/ProductCard";
 import NavbarComponent from "./components/NavbarComponent";
-// import FilterComponent from "./components/FilterComponent";
 import { productDataGenerator } from "./components/dataGenerator/DataGenerator";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import FilterOperations from "./utils/FilterOperations";
 
 function App() {
-  const [data, setData] = useState(productDataGenerator());
-  console.log(data);
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [appliedFilters, setAppliedFilters] = useState("");
+  const [searchQ, setSearchQ] = useState("");
+
+  useEffect(() => {
+    setData(productDataGenerator());
+  }, []);
 
   const searchQuery = (q) => {
-    const obj = productDataGenerator();
-    if (q) {
-      const renderedData = obj.filter((e, i) => {
-        return e.name.toLowerCase().includes(q.toLowerCase());
-      });
-      setData(renderedData);
-    } else {
-      setData(obj);
-    }
+    setSearchQ(q);
   };
 
-  const getFilters = (filter) => {
-    console.log(filter);
-    const obj = productDataGenerator();
-    const renderedData = obj.filter((o, i) => {
-      // if()
-    });
+  const getFilters = (filterQueries) => {
+    setAppliedFilters(filterQueries);
+  };
+
+  const filteredDataFromUtils = (newData) => {
+    setFilteredData(newData);
+    return newData;
   };
 
   return (
     <div className="App">
       <NavbarComponent searchQuery={searchQuery} />
-      <ProductCardComponent data={data} getFilters={getFilters} />
+      <ProductCardComponent data={filteredData} getFilters={getFilters} />
+      <FilterOperations
+        data={data}
+        searchQ={searchQ}
+        filteredDataFromUtils={filteredDataFromUtils}
+        appliedFilters={appliedFilters}
+      />
     </div>
   );
 }
