@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Rating from "./RatingComponent";
 
-function FilterComponent({ filteredData }) {
+function FilterComponent({ filteredData, getFilterRef }) {
   const [open, setOpen] = useState({
     rating: false,
     brand: false,
@@ -13,6 +13,11 @@ function FilterComponent({ filteredData }) {
     price: { under50: false, over50: false, min: 0, max: 100 },
     rating: { one: false, two: false, three: false, four: false, five: false },
   });
+  const filterRef = useRef(null);
+
+  useEffect(() => {
+    getFilterRef(filterRef);
+  }, [filterRef, getFilterRef]);
 
   const handleFilterClick = (q) => {
     if (q === "b") {
@@ -26,7 +31,7 @@ function FilterComponent({ filteredData }) {
 
   useEffect(() => {
     filteredData(value);
-  }, [value]);
+  }, [value, filteredData]);
 
   const handlePriceInputFilter = (e, s) => {
     const targetVal = e.target.value;
@@ -162,16 +167,23 @@ function FilterComponent({ filteredData }) {
   };
 
   return (
-    <div className="filter-main">
-      <div className="filter-title"> Search Results</div>
+    <div className="filter-main" ref={filterRef}>
+      <div className="filter-title"> Filters</div>
       <div className="brand-range">
         <div className="filter-heading" onClick={() => handleFilterClick("b")}>
           <div>Brand</div>
           <div>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2985/2985150.png"
-              alt="down-arrow"
-            />
+            {open.brand ? (
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2985/2985195.png"
+                alt="up-arrow"
+              />
+            ) : (
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2985/2985150.png"
+                alt="down-arrow"
+              />
+            )}
           </div>
         </div>
         {open.brand && (
@@ -216,10 +228,17 @@ function FilterComponent({ filteredData }) {
         <div className="filter-heading" onClick={() => handleFilterClick("p")}>
           <div>Price</div>
           <div>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2985/2985150.png"
-              alt="down-arrow"
-            />
+            {open.price ? (
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2985/2985195.png"
+                alt="up-arrow"
+              />
+            ) : (
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2985/2985150.png"
+                alt="down-arrow"
+              />
+            )}
           </div>
         </div>
         {open.price && (
@@ -277,10 +296,17 @@ function FilterComponent({ filteredData }) {
         <div className="filter-heading" onClick={() => handleFilterClick("r")}>
           <div>Rating</div>
           <div>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2985/2985150.png"
-              alt="down-arrow"
-            />
+            {open.rating ? (
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2985/2985195.png"
+                alt="up-arrow"
+              />
+            ) : (
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2985/2985150.png"
+                alt="down-arrow"
+              />
+            )}
           </div>
         </div>
         {open.rating && (

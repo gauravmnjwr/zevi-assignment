@@ -9,6 +9,7 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [appliedFilters, setAppliedFilters] = useState("");
   const [searchQ, setSearchQ] = useState("");
+  const [filterElement, setFilterElement] = useState(null);
 
   useEffect(() => {
     setData(productDataGenerator());
@@ -27,10 +28,21 @@ function App() {
     return newData;
   };
 
+  const getFilterRef = (filterRef) => {
+    setFilterElement(filterRef);
+  };
+
   return (
     <div className="App">
-      <NavbarComponent searchQuery={searchQuery} />
-      <ProductCardComponent data={filteredData} getFilters={getFilters} />
+      <NavbarComponent
+        searchQuery={searchQuery}
+        filterElement={filterElement}
+      />
+      <ProductCardComponent
+        data={filteredData}
+        getFilters={getFilters}
+        getFilterRef={getFilterRef}
+      />
       <FilterOperations
         data={data}
         searchQ={searchQ}

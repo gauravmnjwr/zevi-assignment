@@ -15,11 +15,9 @@ code {
 .all-cards {
   display: flex;
   flex-wrap: wrap;
-  /* row-gap: 20px;
-  column-gap: 20px; */
   align-items: center;
-  justify-content: center;
-  height: 89vh;
+  justify-content: space-evenly;
+  height: 88vh;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -29,7 +27,7 @@ code {
   display: flex;
   flex-direction: column;
   min-height: 200px;
-  min-width: 190px;
+  min-width: 170px;
   row-gap: 2px;
 }
 
@@ -102,28 +100,35 @@ code {
   margin: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+  column-gap: 50px;
 }
 
 .search-inp {
-  width: 80%;
+  width: 50%;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: white;
   border: 1px solid rgb(188, 188, 188);
-  width: fit-content;
   border-radius: 15px;
+  min-width: 225px;
+  max-width: 600px;
 }
 
 .search-inp input {
   height: 40px;
-  width: 500px;
+  width: 80%;
   border-radius: 15px;
   border: 0px;
   padding-left: 10px;
   font-size: 16px;
+}
+input[type="checkbox"] {
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
 }
 
 .search-inp input:focus {
@@ -139,22 +144,35 @@ code {
   border: 0px;
   color: #000000;
   border-radius: 15px;
-  cursor: pointer;
 }
 
 .search-inp button img {
   height: 20px;
 }
-
+.filter-small-button {
+  display: none;
+}
+.filter-small-button img {
+  height: 30px;
+}
+.filter-small-button button {
+  border: 0px;
+  border-radius: 10px;
+  padding: 8px;
+  background-color: white;
+  cursor: pointer;
+}
+.filter-small-button button:hover {
+  background-color: aliceblue;
+}
 .main-page {
   display: flex;
   column-gap: 0px;
 }
 
 .filter-main {
-  width: 25%;
-  /* background-color: #6d84ff; */
-  height: 600px;
+  width: 20%;
+  height: 88vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -164,31 +182,59 @@ code {
 .filter-main > div {
   width: 80%;
   display: flex;
-
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   row-gap: 10px;
+}
+
+.brand-range,
+.price-range,
+.rating-range {
+  width: 88% !important;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(211, 207, 207);
 }
 
 .filter-heading {
   display: flex;
-  width: 80%;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
+  text-transform: uppercase;
+  font-weight: 600;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  /* border-bottom: 1px solid black; */
 }
 
 .all-cards {
-  width: 75%;
+  width: 80%;
+  /* backdrop-filter: blur(1000px); */
+}
+
+.background-blur {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  background-color: #ffffff;
 }
 .filter-main img {
   height: 15px;
 }
 
 .filter-title {
-  font-size: 35px;
+  font-size: 30px;
   text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #494949;
   margin-bottom: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .tiles {
@@ -196,11 +242,17 @@ code {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
+  font-size: 12px;
+  /* border-bottom: 1px solid black; */
 }
 
 .tiles > div {
   display: flex;
-  column-gap: 20px;
+  column-gap: 10px;
+}
+.rating-text {
+  font-size: 10px;
+  font-family: monospace;
 }
 
 .price-inp {
@@ -235,4 +287,40 @@ input[type="number"] {
   border-radius: 6px;
   padding-left: 10px;
   font-size: 14px;
+}
+
+.notFound {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.notFound > div {
+  font-size: 28px;
+  text-align: center;
+  font-style: italic;
+  font-family: "Times New Roman", Times, serif;
+}
+.notFound img {
+  height: 350px;
+}
+
+@media screen and (max-width: 1150px) {
+  .filter-main {
+    display: none;
+  }
+  .hidden {
+    width: 50%;
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    display: flex;
+  }
+  .all-cards {
+    width: 100%;
+    z-index: 1;
+  }
+  .filter-small-button {
+    display: block;
+  }
 }
