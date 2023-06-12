@@ -59,7 +59,6 @@ code {
 
 .p-image {
   width: 100%;
-  position: relative;
 }
 .p-image img {
   width: 100%;
@@ -374,6 +373,8 @@ input[type="number"] {
   flex-direction: column;
   row-gap: 10px;
   padding: 20px;
+  -webkit-box-shadow: 0 0 10px #515050;
+  box-shadow: 0 0 10px #484848;
 }
 .home-suggestions-tilep {
   display: flex;
@@ -440,4 +441,40 @@ input[type="number"] {
 
 .accordion {
   animation: topSlide 0.2s ease-in-out;
+}
+.parent-hover {
+  position: relative;
+}
+.hover-bar {
+  background-color: #3153ffc3;
+  position: absolute;
+  bottom: 2px;
+  width: 100%;
+  max-height: 350px;
+  max-width: 300px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  display: none;
+}
+
+.parent-hover:hover .hover-bar {
+  display: flex;
+}
+
+.hover-bar:hover {
+  cursor: pointer;
+}
+
+.abs-heart i {
+  color: white;
+  height: 20px;
+  cursor: pointer;
+}
+
+.abs-heart-color {
+  color: red !important;
 }

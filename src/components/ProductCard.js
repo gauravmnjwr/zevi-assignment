@@ -7,6 +7,15 @@ function ProductCard({ data, getFilters, getFilterRef }) {
     getFilters(q);
   };
 
+  const handleClickHeart = (e) => {
+    const element = e.target;
+    if (element.classList.contains("abs-heart-color")) {
+      element.classList.remove("abs-heart-color");
+    } else {
+      element.classList.add("abs-heart-color");
+    }
+  };
+
   return (
     <div className="main-page">
       <FilterComponent
@@ -19,13 +28,17 @@ function ProductCard({ data, getFilters, getFilterRef }) {
             return (
               <div key={d.id} className="main-card">
                 <div className="p-image">
-                  <div className="abs-heart">
-                    <i
-                      className="fa-regular fa-heart"
-                      style={{ color: "#ffffff" }}
-                    ></i>
+                  <div className="parent-hover">
+                    <div className="abs-heart">
+                      <i
+                        className="fa fa-heart"
+                        aria-hidden="true"
+                        onClick={handleClickHeart}
+                      ></i>
+                    </div>
+                    <div className="hover-bar">View Product</div>
+                    <img src={d.img} alt="" />
                   </div>
-                  <img src={d.img} alt="" />
                 </div>
                 <div className="p-name">{d.name}</div>
                 <div className="p-price">
