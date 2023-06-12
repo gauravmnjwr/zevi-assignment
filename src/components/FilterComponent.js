@@ -187,7 +187,7 @@ function FilterComponent({ filteredData, getFilterRef }) {
           </div>
         </div>
         {open.brand && (
-          <div className="tiles">
+          <div className={`tiles accordion ${open.brand ? "open" : ""}`}>
             <div>
               <input
                 type="checkbox"
@@ -242,7 +242,9 @@ function FilterComponent({ filteredData, getFilterRef }) {
           </div>
         </div>
         {open.price && (
-          <div className="tiles price-inp">
+          <div
+            className={`tiles price-inp accordion ${open.brand ? "open" : ""}`}
+          >
             <div>
               <div className="price-over-div">
                 $
@@ -310,7 +312,9 @@ function FilterComponent({ filteredData, getFilterRef }) {
           </div>
         </div>
         {open.rating && (
-          <div className="tiles rating-inp">
+          <div
+            className={`tiles price-inp accordion ${open.brand ? "open" : ""}`}
+          >
             <div>
               <input
                 type="checkbox"

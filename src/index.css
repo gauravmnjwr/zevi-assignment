@@ -1,3 +1,29 @@
+@keyframes rightSlide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes leftSlide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes topSlide {
+  from {
+    transform: translateY(-10%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -100,7 +126,6 @@ code {
   margin: 20px;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   column-gap: 50px;
 }
 
@@ -207,12 +232,10 @@ input[type="checkbox"] {
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  /* border-bottom: 1px solid black; */
 }
 
 .all-cards {
   width: 80%;
-  /* backdrop-filter: blur(1000px); */
 }
 
 .background-blur {
@@ -243,7 +266,6 @@ input[type="checkbox"] {
   flex-direction: column;
   row-gap: 5px;
   font-size: 12px;
-  /* border-bottom: 1px solid black; */
 }
 
 .tiles > div {
@@ -323,4 +345,99 @@ input[type="number"] {
   .filter-small-button {
     display: block;
   }
+}
+
+.home {
+  background-image: url("./assets/homebackground.jpg");
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.home > div {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-top: 10%;
+}
+.home-search-input button {
+  cursor: pointer;
+}
+.home-suggestions {
+  height: 600px;
+  background-color: #ffffff;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 20px;
+}
+.home-suggestions-tilep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.home-suggestion-tile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-suggestion-tile img,
+.home-suggestion-tile > p {
+  width: 80%;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.suggestion-heading {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.suggestion-links {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.suggestion-links div {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 850px) {
+  .head1,
+  .home-suggestions-tilep {
+    display: none;
+  }
+  .home-suggestions {
+    height: 400px;
+  }
+}
+
+.home-suggestions {
+  animation: rightSlide 0.5s ease-in-out;
+}
+.home-search-div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-main {
+  animation: leftSlide 0.4s ease-in-out;
+}
+
+.accordion {
+  animation: topSlide 0.2s ease-in-out;
 }
